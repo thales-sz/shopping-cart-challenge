@@ -1,11 +1,4 @@
-import {
-  FilterQuery,
-  Model,
-  UpdateQuery,
-  Connection,
-  SaveOptions,
-  Types,
-} from 'mongoose';
+import { FilterQuery, Model, UpdateQuery, SaveOptions, Types } from 'mongoose';
 import { AbstractDocument } from './abstract.schema';
 
 export abstract class AbstractRepository<T extends AbstractDocument> {
