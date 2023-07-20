@@ -8,7 +8,7 @@ export type OrderDocument = HydratedDocument<Order>;
 @Schema()
 export class Order extends AbstractDocument {
   @Prop({ type: Product, required: true })
-  product: Product[];
+  products: Product[];
 
   @Prop({ type: Number, required: true })
   totalPrice: number;
