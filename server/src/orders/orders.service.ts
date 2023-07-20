@@ -2,28 +2,33 @@ import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { OrdersRepository } from './orders.repository';
+import { Order } from './schema/orders.schema';
+import { FilterQuery } from 'mongoose';
 
 @Injectable()
 export class OrdersService {
   constructor(private readonly ordersRepository: OrdersRepository) {}
 
-  create(createOrderDto: CreateOrderDto) {
-    return 'This action adds a new order';
+  async create(createOrderDto: CreateOrderDto) {
+    return this.ordersRepository.create(createOrderDto);
   }
 
-  findAll() {
-    return `This action returns all orders`;
+  async findAll(filterQuery: FilterQuery<Order>): Promise<Order[]> {
+    return this.ordersRepository.findAll(filterQuery);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} order`;
+  async findOne(filterQuery: FilterQuery<Order>): Promise<Order | null> {
+    return this.ordersRepository.findOne(filterQuery);
   }
 
-  update(id: number, updateOrderDto: UpdateOrderDto) {
-    return `This action updates a #${id} order`;
+  async update(
+    id: string,
+    updateOrderDto: UpdateOrderDto,
+  ): Promise<Order | null> {
+    return this.ordersRepository.findOneAndUpdate({ _id: id }, updateOrderDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} order`;
+  async remove(id: string): Promise<void> {
+    await this.ordersRepository.delete({ _id: id });
   }
 }
