@@ -4,7 +4,7 @@ import { Product } from 'src/products/schema/products.schema';
 
 export class CreateOrderDto extends AbstractDocument {
   @IsNotEmpty()
-  products: Product[];
+  products: Array<Product>;
 
   @IsNumber()
   @IsNotEmpty()
