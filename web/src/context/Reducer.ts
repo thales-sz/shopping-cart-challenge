@@ -8,6 +8,7 @@ interface IDispatch {
 
 export enum ActionTypes {
   toggleProducts = 'toggleProducts',
+  toggleRemoveProducts = 'toggleRemoveProducts'
 }
 
 export const contextReducer = (state: IContext, { payload, type }: IDispatch): any => {
@@ -15,7 +16,14 @@ export const contextReducer = (state: IContext, { payload, type }: IDispatch): a
     case ActionTypes.toggleProducts:
       return {
         ...state,
-        products: [...payload]
+        products: [
+          ...state.products,
+          payload
+        ]
+      }
+    case ActionTypes.toggleRemoveProducts:
+      return {
+        products: state.products.filter((product) => product.name !== payload.name)
       }
     default:
       throw new Error('Unknown action')

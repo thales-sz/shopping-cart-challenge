@@ -8,13 +8,13 @@ function App() {
   return (
     <main className='flex justify-between bg-slate-100'>
       <Header />
-      <body className='w-2/3 ml-10 mt-40'>
+      <section className='w-2/3 ml-10 mt-40'>
         <ul className="flex flex-wrap gap-4 justify-center">
           {mockData.map((item, index) => {
             return <ProductCard {...item} key={index} />;
           })}
         </ul>
-      </body>
+      </section>
       <ShoppingCart />
     </main>
   );

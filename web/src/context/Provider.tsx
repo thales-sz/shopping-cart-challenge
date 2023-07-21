@@ -12,24 +12,25 @@ interface IProps {
   children: ReactNode
 }
 
-const defaultState = {
-  image: '',
-  name: '',
-  price: 0
-}
-
 function Provider({ children }: IProps): JSX.Element {
-  const [state, dispatch] = useReducer(contextReducer, { products: [defaultState] })
+  const [state, dispatch] = useReducer(contextReducer, { products: [] })
 
-  const toggleProducts = useCallback((body: IProduct[]) => {
+  const toggleProducts = useCallback((body: IProduct) => {
     dispatch({
       type: ActionTypes.toggleProducts,
       payload: body
     })
   }, [dispatch])
 
+  const toggleRemoveProducts = useCallback((body: IProduct) => {
+    dispatch({
+      type: ActionTypes.toggleRemoveProducts,
+      payload: body
+    })
+  }, [dispatch])
+
   return (
-    <Context.Provider value= {{ ...state, toggleProducts }}>
+    <Context.Provider value= {{ ...state, toggleProducts, toggleRemoveProducts }}>
       { children }
     </Context.Provider>
   )

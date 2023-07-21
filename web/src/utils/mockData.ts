@@ -1,6 +1,6 @@
 export const mockData = [
   {
-    name: 'Samsung Galaxy A14 (exynos) 5g Dual Sim 64 Gb Light Green 4 Gb Ram',
+    name: 'Samsung',
     price: 1102,
     image: 'http://http2.mlstatic.com/D_966187-MLA54240681014_032023-I.jpg',
   },
