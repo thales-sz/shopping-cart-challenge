@@ -3,6 +3,7 @@ import { Context } from './Context'
 import { ActionTypes, contextReducer } from './Reducer'
 
 export interface IProduct {
+  _id: string
   image: string
   name: string
   price: number
