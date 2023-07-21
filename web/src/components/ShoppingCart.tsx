@@ -26,7 +26,7 @@ function ShoppingCart() {
     return [...acc, item];
   }, []);
 
-  const subtotal = listItens.reduce((acc, item) => {
+  const finalPrice = listItens.reduce((acc, item) => {
     if (item.quantity) {
       return acc + item.price * item.quantity;
     }
@@ -38,7 +38,7 @@ function ShoppingCart() {
       <h1 className="text-4xl font-bold p-5">Seu carrinho</h1>
       <div className="flex flex-col gap-4 w-full justify-center items-center">
         {products.length > 0 ? (
-          <ul className="flex flex-col overflow-y-auto max-h-[500px] gap-2">
+          <ul className="flex flex-col overflow-y-auto max-h-[500px] gap-2 scrollCart">
             {listItens.map((item, index) => {
               return (
                 <li
@@ -53,15 +53,24 @@ function ShoppingCart() {
                   <p className="w-1/2">{item.name}</p>
                   <span>Qntd: {item.quantity ? item.quantity : '1'}</span>
                   <p>
-                    Preço unid:{' '}
-                    {item.price.toLocaleString('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL',
-                      minimumFractionDigits: 2,
-                    })}
+                    Subtotal:{' '}
+                    {item.quantity
+                      ? (item.quantity * item.price).toLocaleString('pt-BR', {
+                          style: 'currency',
+                          currency: 'BRL',
+                          minimumFractionDigits: 2,
+                        })
+                      : item.price.toLocaleString('pt-BR', {
+                          style: 'currency',
+                          currency: 'BRL',
+                          minimumFractionDigits: 2,
+                        })}
                   </p>
                   <button onClick={() => toggleRemoveProducts({ ...item })}>
-                    <RxCross2 size={30} className="text-red-500 font-extrabold hover:scale-110"/>
+                    <RxCross2
+                      size={30}
+                      className="text-red-500 font-extrabold hover:scale-110"
+                    />
                   </button>
                 </li>
               );
@@ -76,8 +85,8 @@ function ShoppingCart() {
       </div>
       <div className="flex flex-col gap-4 w-full justify-center items-center">
         <p className="font-bold text-2xl">
-          Subtotal:{' '}
-          {subtotal.toLocaleString('pt-BR', {
+          Total:{' '}
+          {finalPrice.toLocaleString('pt-BR', {
             style: 'currency',
             currency: 'BRL',
             minimumFractionDigits: 2,
