@@ -19,6 +19,7 @@ function App() {
     staleTime: 1000 * 60 * 10,
   });
 
+
   return (
     <main className="flex justify-between bg-slate-100 min-h-screen">
       <Header />
