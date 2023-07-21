@@ -22,19 +22,24 @@ export class OrdersController {
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.ordersService.findAll({});
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    const order = this.ordersService.findOne({ _id: id });
+  async findOne(@Param('id') id: string) {
+    const order = await this.ordersService.findOne({ _id: id });
 
     if (!order) throw new NotFoundException(`Order with id: '${id}' not found`);
+
+    return order;
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateOrderDto: UpdateOrderDto) {
+  async update(
+    @Param('id') id: string,
+    @Body() updateOrderDto: UpdateOrderDto,
+  ) {
     return this.ordersService.update(id, updateOrderDto);
   }
 
