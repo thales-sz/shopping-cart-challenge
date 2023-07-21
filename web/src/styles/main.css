@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.scrollCart::-webkit-scrollbar {
+  width: 10px;         
+}
+
+.scrollCart::-webkit-scrollbar-track {
+  background: none;
+  padding: 2px;
+}
+
+.scrollCart::-webkit-scrollbar-thumb {
+  background-color: rgb(120, 53, 15, 0.5);    
+  border-radius: 20px;
+  margin: 2px;
+}
