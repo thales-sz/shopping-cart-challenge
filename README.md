@@ -15,7 +15,7 @@ Ambos utilizam TypeScript como linguagem de programação.
 - Backend: 
 > TypeScript, NestJS, mongoose ODM, class-validator e Joi.
 - Frontend: 
-> TypeScript, React, Vite, React-Query, React-Icons, axios, tailwindcss.
+> TypeScript, React, Vite, React-Query, React-Icons, axios, tailwindcss, Context API.
 
 ## Preview
 
