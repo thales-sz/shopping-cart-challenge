@@ -28,11 +28,18 @@ export class OrdersController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    const order = await this.ordersService.findOne({ _id: id });
+    try {
+      const order = await this.ordersService.findOne({ _id: id });
 
-    if (!order) throw new NotFoundException(`Order with id: '${id}' not found`);
+      if (!order) throw new NotFoundException(`Order with id: ${id} not found`);
 
-    return order;
+      return order;
+    } catch (error) {
+      if (error.name === 'CastError') {
+        throw new NotFoundException(`Could not search for the id: ${id}`);
+      }
+      throw error;
+    }
   }
 
   @Patch(':id')
