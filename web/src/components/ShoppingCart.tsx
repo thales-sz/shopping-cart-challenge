@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import { BsCart3 } from 'react-icons/bs';
+import { Context } from '../context/Context';
 
 function ShoppingCart() {
-  const [cartItens, setCartItens] = useState([]);
+  const { products } = useContext(Context)
 
   return (
     <aside className="flex flex-col fixed right-0 w-1/4 bg-cart h-screen shadow-2xl z-20 text-center p-5 justify-between">
       <h1 className="text-4xl font-bold p-5">Seu carrinho</h1>
       <div className="flex flex-col gap-4 w-full justify-center items-center">
-        {cartItens.length > 0 ? (
+        {products.length > 0 ? (
           <p>Itens</p>
         ) : (
           <>

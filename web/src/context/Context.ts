@@ -8,7 +8,7 @@ export interface IContext {
 
 const defaultState = {
   image: '',
-  description: '',
+  name: '',
   price: 0
 }
 

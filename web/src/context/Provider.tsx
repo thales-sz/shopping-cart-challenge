@@ -4,7 +4,7 @@ import { ActionTypes, contextReducer } from './Reducer'
 
 export interface IProduct {
   image: string
-  description: string
+  name: string
   price: number
 }
 
@@ -14,7 +14,7 @@ interface IProps {
 
 const defaultState = {
   image: '',
-  description: '',
+  name: '',
   price: 0
 }
 

@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { Context } from "../context/Context";
+
 interface ProductCardProps {
   image: string;
   name: string;
@@ -5,6 +8,7 @@ interface ProductCardProps {
 }
 
 function ProductCard({ image, name, price }: ProductCardProps) {
+  const { toggleProducts } = useContext(Context)
 
   return (
     <li className="flex flex-col text-center cursor-pointer w-1/5 items-center bg-white border hover:shadow-lg transition-all">
@@ -18,7 +22,9 @@ function ProductCard({ image, name, price }: ProductCardProps) {
             minimumFractionDigits: 2,
           })}
         </p>
-        <button className="bg-amber-200 hover:bg-amber-300 w-fit self-center p-2 hover:bg- rounded-xl shadow font-bold">
+        <button
+        className="bg-amber-200 hover:bg-amber-300 w-fit self-center p-2 hover:bg- rounded-xl shadow font-bold"
+        onClick={() => toggleProducts({ name, image, price })}>
           Adicionar ao carrinho
         </button>
       </div>
