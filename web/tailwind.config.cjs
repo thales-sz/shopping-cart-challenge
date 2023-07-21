@@ -10,8 +10,8 @@ export default {
       backgroundColor: {
         'primary': '#A4907C',
         'secondary': '#98EECC',
-        'terciary': '#D0F5BE',
-        'quaternary': '#FBFFDC'
+        'header': '#FBEEAC',
+        'cart': '#F4D160'
       },
       textColor: {
         'primary': '#A4907C',
