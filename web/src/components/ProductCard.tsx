@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Context } from "../context/Context";
+import { useContext } from 'react';
+import { Context } from '../context/Context';
 
 interface ProductCardProps {
   _id: string;
@@ -9,7 +9,7 @@ interface ProductCardProps {
 }
 
 function ProductCard(props: ProductCardProps) {
-  const { toggleProducts } = useContext(Context)
+  const { toggleProducts } = useContext(Context);
 
   return (
     <li className="flex flex-col text-center cursor-pointer w-1/5 items-center bg-white border hover:shadow-lg transition-all">
@@ -24,8 +24,9 @@ function ProductCard(props: ProductCardProps) {
           })}
         </p>
         <button
-        className="bg-amber-200 hover:bg-amber-300 w-fit self-center p-2 hover:bg- rounded-xl shadow font-bold"
-        onClick={() => toggleProducts(props)}>
+          className="bg-amber-200 hover:bg-amber-300 w-fit self-center p-2 hover:bg- rounded-xl shadow font-bold"
+          onClick={() => toggleProducts(props)}
+        >
           Adicionar ao carrinho
         </button>
       </div>
